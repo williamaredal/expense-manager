@@ -1,30 +1,42 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import store from '../store';
+import  '../views/homepage.css';
 
-export default function TransactionHistory () {
-    const [exampleHistory, updateHistory] = useState([
-        { 
-            ammount : 0,
-            date : "someDate1",
-        },
-        { 
-            ammount : 10,
-            date : "someDate2",
-        },
-        { 
-            ammount : -10,
-            date : "someDate3",
-        },
+const mapStateToProps = (state) => {
+    return {
+        transactions : [...state.transactions],
+    }
+}
+
+function TransactionHistory (props) {
+    const [transactionHistory, updateHistory] = useState([
+        ...props.transactions
     ]);
 
+    store.subscribe( () => {
+        updateHistory([
+            ...props.transactions
+        ])
+    })
     
     return (
         <div>
-            {exampleHistory.map( (element) => {
-                <div>
-                    {element.ammount}
-                    {element.date}
-                </div>
+            {transactionHistory.map( (transaction) => {
+                return (
+                    <div className="transactionCard">
+                        <div className="cell">
+                            {transaction.ammount}
+                        </div>
+                        <div className="cell">
+                            {transaction.date}
+                        </div>
+
+                    </div>
+                )
             })}
         </div>
     )
 }
+
+export default connect(mapStateToProps)(TransactionHistory);

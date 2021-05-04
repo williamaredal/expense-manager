@@ -6,42 +6,33 @@ import  './homepage.css'
 const mapStateToProps = (state) => {
     return {
         balance : state.balance,
+        transactions : state.transactions
     }
 }
 
 function Dashboard (props) {
-    const [Balance, updateBalance] = useState(0);
-    const [formValue, updateForm] = useState(0);
-    const [account, updateAccount] = useState(3221412);
-    const [transactions, updateTransactions] = useState(10);
-    
+    const [accountBalance, updateBalance] = useState(store.getState().balance);
+    const [accountNumber, updateAccountNumber] = useState(3221412);
+    const [accountTransactions, updateTransactions] = useState(store.getState().transactions.length);
+
     store.subscribe( () => {
-        updateBalance(store.getState().balance)
-    })
+        updateBalance(props.balance)
+        updateTransactions(props.transactions.length)
+    });
 
     return (
         <div className="balanceView">
             <div className="balanceCard">
                 <div className="cell">
-                    <p>
-                        Account: {account}
-                    </p>
+                        Account: {accountNumber}
                 </div>
                 <div className="cell">
-                    <p>
-                        Your balance is currently: {Balance}
-                        {Balance === 0 ? ' Pooooor' : 'Rich?'}
-                    </p>
+                        Your balance is currently: {accountBalance}
+                        {accountBalance <= 0 ? ' Pooooor' : 'Rich?'}
                 </div>
                 <div className="cell">
-                    <p>
-                        Transactions: {transactions}
-                    </p>
+                        Transactions: {accountTransactions}
                 </div>
-            </div>
-            <div>
-                <input onChange={(e) => {updateForm(Number(e.target.value))}}/>
-                <button onClick={() => store.dispatch({type : 'expences/balance', payload : formValue}) }>Add to balance</button>
             </div>
 
         </div>
