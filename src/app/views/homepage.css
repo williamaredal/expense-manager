@@ -1,16 +1,45 @@
+.mainView {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 .balanceView {
     display: flex;
     justify-content: center;
+    margin: 2rem;
+}
+.cell {
+    padding: 0.75rem;
 }
 
 .balanceCard {
-    border-radius: 1rem;
-    padding: 0.5rem;
-    width: 70%;
+    border-radius: 0.5rem;
+    width: 60%;
     border-style: solid;
+    border-width: thin;
     border-color: black;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+}
+
+.balanceCard:hover {
+    box-shadow: 0 0 2px black;
+}
+
+.specialButton {
+    display: flex;
+    width: fit-content;
+    border-radius: 1rem;
+    border: solid;
+    border-width: thin;
+    padding: 0.75rem;
+    margin: 0.5rem;
+    align-self: center;
+}
+
+.specialButton:hover {
+    box-shadow: 0 0 2px black;
 }
 
 .transactionCard {
@@ -19,11 +48,47 @@
     margin-bottom: 0.25rem;
     width: 70%;
     border-style: solid;
+    border-width: thin;
     border-color: black;
     display: flex;
     justify-content: space-evenly;
 }
 
-.cell {
-    padding: 0.5rem;
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    background-color: #16284C;
+    color: white;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    background-color: #16284C;
+    color: white;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.button {
+    border-radius: 1rem;
+    border: none;
+    padding: 0.75rem;
+    background-color: #f1f1f1;
+    font-weight: bolder;
+}
+
+.button:hover {
+    background-color: #24a0ed;
+    box-shadow: 0 0 5px black;
 }

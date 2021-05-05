@@ -1,7 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 const initialState = {
-  balance : 0,
+  accountNumber : Math.floor(Math.random()*10000000000000),
+  accountName : 'My Account Name',
+  accountAvailableBalance : 100, // sum of authenticated transactions
+  accountDueBalance : 10, // sum of transactions pending authentication
+
   transactions : [
     {
       ammount : 1,
@@ -12,12 +16,19 @@ const initialState = {
 
 function AccountantReducer ( state = initialState, action) {
 
+  console.log(state, action)
+
   switch(action.type) {
     case 'expences/balance' : 
-    return { ...state, balance : state.balance + action.payload}
+    return {
+      ...state,
+      balance : state.balance + action.payload}
     
     case 'expences/addTransaction' : 
-    return { ...state, balance : state.balance + action.payload.ammount, transactions : [ ...state.transactions, { ammount : action.payload.ammount, date : action.payload.date }] }
+    return {
+      ...state,
+      accountDueBalance : state.accountDueBalance + action.payload.ammount,
+      transactions : [ ...state.transactions, { ammount : action.payload.ammount, date : action.payload.date }] }
     
     default : 
     return state

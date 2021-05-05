@@ -12,13 +12,7 @@ function App() {
   return (
     <div>
 
-      <header>
-        <h1> Expence Manager</h1>
-      </header>
-
       <Dashboard />
-      <Transaction />
-      <TransactionHistory />
 
     </div>
   );
