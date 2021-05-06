@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import store from '../store';
-import  '../views/homepage.css';
 
 const mapStateToProps = (state) => {
     return {

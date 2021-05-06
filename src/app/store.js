@@ -8,8 +8,13 @@ const initialState = {
 
   transactions : [
     {
+      transactionID : 'UNIQUEID',
+      transactionAccount : 'Parent Account',
+      date : new Date(),
       ammount : 1,
-      date : 'testDate'
+      transactionTitle : 'This is a test title for transaction 1',
+      transactionDescription : 'This is a test description for transaction 1. thus being a little longer',
+      transactionAuthenticated : false,
     },
   ],
 }
@@ -28,7 +33,17 @@ function AccountantReducer ( state = initialState, action) {
     return {
       ...state,
       accountDueBalance : state.accountDueBalance + action.payload.ammount,
-      transactions : [ ...state.transactions, { ammount : action.payload.ammount, date : action.payload.date }] }
+      transactions : [ ...state.transactions,
+      {
+        transactionID : 'NEWUNIQUEID',
+        transactionAccount : action.payload.parentAccount,
+        ammount : action.payload.ammount,
+        date : new Date(),
+        transactionTitle : action.payload.title,
+        transactionDescription : action.payload.description,
+        transactionAuthenticated : action.payload.authenticated, // is the transaction can be authenticated after being made or just submitted
+      }
+    ] }
     
     default : 
     return state

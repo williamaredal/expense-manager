@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-export default function TransactionAuthentication (transactionDetails) {
+export default function TransactionAuthentication () {
 
     return (
         <div>
             <p>
-                Transaction values spread: {...transactionDetails}
+                TransactionAuthentication page
             </p>
         </div>
     )
