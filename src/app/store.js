@@ -9,7 +9,7 @@ const initialState = {
   transactions : [
     {
       transactionID : 'UNIQUEID',
-      transactionAccount : 'Parent Account',
+      transactionAccount : 'Parent Account Number',
       date : new Date(),
       ammount : 1,
       transactionTitle : 'This is a test title for transaction 1',
@@ -27,23 +27,44 @@ function AccountantReducer ( state = initialState, action) {
     case 'expences/balance' : 
     return {
       ...state,
-      balance : state.balance + action.payload}
+      balance : state.balance + action.payload
+    }
     
     case 'expences/addTransaction' : 
     return {
       ...state,
       accountDueBalance : state.accountDueBalance + action.payload.ammount,
-      transactions : [ ...state.transactions,
-      {
-        transactionID : 'NEWUNIQUEID',
-        transactionAccount : action.payload.parentAccount,
-        ammount : action.payload.ammount,
-        date : new Date(),
-        transactionTitle : action.payload.title,
-        transactionDescription : action.payload.description,
-        transactionAuthenticated : action.payload.authenticated, // is the transaction can be authenticated after being made or just submitted
-      }
-    ] }
+      transactions : [
+        ...state.transactions,
+        {
+          transactionID : action.payload.transactionNumber ? action.payload.transactionNumber : Math.round(Math.random()*10000000000000),
+          transactionAccount : action.payload.parentAccount,
+          ammount : action.payload.ammount,
+          date : action.payload.date ? action.payload.date : new Date(),
+          transactionTitle : action.payload.title,
+          transactionDescription : action.payload.description,
+          transactionAuthenticated : action.payload.authenticated,
+        },
+      ]
+    }
+    
+    case 'expences/authTransaction' : 
+    return {
+      ...state,
+      accountAvailableBalance : state.accountAvailableBalance + action.payload.ammount,
+      transactions : [
+        ...state.transactions,
+        {
+          transactionID : action.payload.transactionNumber,
+          transactionAccount : action.payload.parentAccount,
+          ammount : action.payload.ammount,
+          date : action.payload.date ? action.payload.date : new Date(),
+          transactionTitle : action.payload.title,
+          transactionDescription : action.payload.description,
+          transactionAuthenticated : action.payload.authenticated,
+        },
+      ]
+    }
     
     default : 
     return state

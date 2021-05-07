@@ -23,15 +23,3 @@
 .balanceCard:hover {
     box-shadow: 0 0 2px black;
 }
-
-.transactionCard {
-    border-radius: 1rem;
-    padding: 0.25rem;
-    margin-bottom: 0.25rem;
-    width: 70%;
-    border-style: solid;
-    border-width: thin;
-    border-color: black;
-    display: flex;
-    justify-content: space-evenly;
-}

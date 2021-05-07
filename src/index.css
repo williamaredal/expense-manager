@@ -29,14 +29,15 @@ body {
   display: flex;
   background-color: #16284C;
   color: white;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .button {
   border-radius: 1rem;
   border: none;
   padding: 0.75rem;
+  margin: 0.5rem;
   background-color: #f1f1f1;
   font-weight: bolder;
 }

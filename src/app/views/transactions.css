@@ -1,0 +1,35 @@
+.mainView {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.transactionHistoryCard {
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+}
+
+.transactionCard {
+    border-radius: 1rem;
+    width: 100%;
+    border-style: solid;
+    border-width: thin;
+    border-color: black;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.transactionCard:hover {
+    box-shadow: 0 0 2px black;
+}
+
+.transactionsOverview {
+    border-radius: 0.5rem;
+    width: 60%;
+    border-style: solid;
+    border-width: thin;
+    border-color: black;
+    display: flex;
+    justify-content: space-between;
+}

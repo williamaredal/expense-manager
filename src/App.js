@@ -3,9 +3,9 @@ import { BrowserRouter, Route, Switch, useHistory } from 'react-router-dom';
 import Dashboard from './app/views/dashboard';
 import Register from './app/views/register';
 import Login from './app/views/login';
-import TransactionHistory from './app/components/transactionHistory';
+import Transactions from './app/views/transactions';
 import TransactionAuth from './app/components/transactionAuth';
-import Transaction from './app/components/transaction';
+import Transaction from './app/views/transaction';
 import  './index.css'
 
 import "tailwindcss/tailwind.css";
@@ -26,7 +26,7 @@ class App extends React.Component {
             <Route exact path="/login" component={Login}/>
             <Route exact path="/transaction" component={Transaction}/>
             <Route exact path="/transactionAuthentication" component={TransactionAuth}/>
-            <Route exact path="/transactionHistory" component={TransactionHistory}/>
+            <Route exact path="/transactionHistory" component={Transactions}/>
           </Switch>
         </BrowserRouter>
 

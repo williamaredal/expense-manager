@@ -1,34 +1,29 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import store from '../store';
+import React from 'react';
 
-const mapStateToProps = (state) => {
-    return {
-        transactions : [...state.transactions],
-    }
-}
 
-function TransactionHistory (props) {
-    const [transactionHistory, updateHistory] = useState([
-        ...props.transactions
-    ]);
+export default function TransactionHistory (props) {
 
-    store.subscribe( () => {
-        updateHistory([
-            ...props.transactions
-        ])
-    })
-    
     return (
         <div>
-            {transactionHistory.map( (transaction) => {
+            {props.transactionHistory.map( (transaction, i) => {
+                const transactionDate = transaction.date.getDate() + '-' + (transaction.date.getMonth() + 1) + '-' + transaction.date.getFullYear();
+
                 return (
-                    <div className="transactionCard">
+                    <div key={i} onClick={() => {console.log([transaction]);}} className="transactionCard"> {/* onClick function can be used to pass transaction values on redirect*/}
                         <div className="cell">
-                            {transaction.ammount}
+                            <div>
+                                <b>Account:</b> {transaction.transactionAccount}
+                            </div>
                         </div>
                         <div className="cell">
-                            {transaction.date}
+                            <div>
+                                <b>Ammount:</b> {transaction.ammount}
+                            </div>
+                        </div>
+                        <div className="cell">
+                            <div>
+                                <b>Date:</b> {transactionDate}
+                            </div>
                         </div>
 
                     </div>
@@ -37,5 +32,3 @@ function TransactionHistory (props) {
         </div>
     )
 }
-
-export default connect(mapStateToProps)(TransactionHistory);
