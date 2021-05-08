@@ -11,10 +11,19 @@ const initialState = {
       transactionID : 'UNIQUEID',
       transactionAccount : 'Parent Account Number',
       date : new Date(),
-      ammount : 1,
+      ammount : 10,
       transactionTitle : 'This is a test title for transaction 1',
       transactionDescription : 'This is a test description for transaction 1. thus being a little longer',
       transactionAuthenticated : false,
+    },
+    {
+      transactionID : 'UNIQUEID',
+      transactionAccount : 'Parent Account Number',
+      date : new Date(),
+      ammount : 100,
+      transactionTitle : 'This is a test title for transaction 1',
+      transactionDescription : 'This is a test description for transaction 1. thus being a little longer',
+      transactionAuthenticated : true,
     },
   ],
 }
@@ -47,7 +56,7 @@ function AccountantReducer ( state = initialState, action) {
         },
       ]
     }
-    
+
     case 'expences/authTransaction' : 
     return {
       ...state,

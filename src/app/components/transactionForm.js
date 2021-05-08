@@ -55,7 +55,7 @@ export default function TransactionForm (props) {
         <div className="transactionFormCard">
             <div className="transactionForm">
 
-                <p><b>Transaction: {transactionDetails.transactionNumber}</b></p>
+                <p className="titleUnderline"><b>Transaction: {transactionDetails.transactionNumber}</b></p>
                 <input className="formInput" placeholder="ammount" name="ammount" onChange={(e) => {updateFormVars(e.target.name, Number(e.target.value))}}/>
                 <input className="formInput" placeholder="title" name="transactionTitle" onChange={(e) => {updateFormVars(e.target.name, e.target.value)}}/>
                 <input className="formInput" placeholder="description" name="transactionDescription" onChange={(e) => {updateFormVars(e.target.name, e.target.value)}}/>

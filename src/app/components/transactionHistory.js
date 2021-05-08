@@ -11,21 +11,17 @@ export default function TransactionHistory (props) {
                 return (
                     <div key={i} onClick={() => {console.log([transaction]);}} className="transactionCard"> {/* onClick function can be used to pass transaction values on redirect*/}
                         <div className="cell">
-                            <div>
-                                <b>Account:</b> {transaction.transactionAccount}
-                            </div>
+                            <b>Account:</b> {transaction.transactionAccount}
                         </div>
                         <div className="cell">
-                            <div>
-                                <b>Ammount:</b> {transaction.ammount}
-                            </div>
+                            <b>Ammount:</b> {transaction.ammount}
                         </div>
                         <div className="cell">
-                            <div>
-                                <b>Date:</b> {transactionDate}
-                            </div>
+                            <b>Date:</b> {transactionDate}
                         </div>
-
+                        <div className="cell">
+                            <b>Authenticated:</b> <b className={transaction.transactionAuthenticated ? "transactionAuthenticated" : "transactionWaiting"}>{transaction.transactionAuthenticated.toString()}</b>
+                        </div>
                     </div>
                 )
             })}

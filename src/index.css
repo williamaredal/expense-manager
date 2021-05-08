@@ -71,3 +71,13 @@ body {
   flex-direction: column;
   max-width: 20%;
 }
+
+.titleUnderline {
+  padding-bottom: 0.5rem;
+  border-style: solid;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom-width: medium;
+  border-color: #16284C;
+}

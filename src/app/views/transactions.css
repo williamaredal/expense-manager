@@ -7,11 +7,12 @@
 .transactionHistoryCard {
     display: flex;
     justify-content: center;
-    margin: 2rem;
+    margin: 1rem;
 }
 
 .transactionCard {
     border-radius: 1rem;
+    margin: 0.25rem;
     width: 100%;
     border-style: solid;
     border-width: thin;
@@ -24,12 +25,26 @@
     box-shadow: 0 0 2px black;
 }
 
+.transactionsOverviewCard {
+    display: flex;
+    justify-content: center;
+}
+
 .transactionsOverview {
-    border-radius: 0.5rem;
-    width: 60%;
+    border-radius: 1rem;
+    min-width: 40%;
+    max-width: 60%;
     border-style: solid;
     border-width: thin;
     border-color: black;
     display: flex;
     justify-content: space-between;
+}
+
+.transactionAuthenticated {
+    color: green;
+}
+
+.transactionWaiting {
+    color: red;
 }

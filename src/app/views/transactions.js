@@ -15,6 +15,12 @@ const mapStateToProps = (state) => {
 
 
 function Transactions (props) {
+    const [transactionsAccount, updateAccount] = useState({
+        accountNumber : props.currentState.accountNumber,
+        availableBalance : props.currentState.accountAvailableBalance,
+        dueBalance : props.currentState.accountDueBalance,
+
+    });
     const [transactionHistory, updateHistory] = useState([
         ...props.currentState.transactions
     ]);
@@ -22,16 +28,37 @@ function Transactions (props) {
     store.subscribe( () => {
         updateHistory(
             props.currentState.transactions
-        )
-    })
+        );
+        updateAccount({
+            accountNumber : props.currentState.accountNumber,
+            availableBalance : props.accountAvailableBalance,
+            dueBalance : props.accountDueBalance,
+        });
+    });
     
     return (
         <div className="mainView">
 
             <Header />
+            <div className="transactionsOverviewCard">
+                <p className="titleUnderline"><b>Transaction History of Account {transactionsAccount.accountNumber}</b></p>
+            </div>
 
-            <div className="transactionsOverview">
-                    here is the Card displaying relevant info such as accountNumber, dueBalance, etc
+            <div className="transactionsOverviewCard">
+                <div className="transactionsOverview">
+                    <div className="cell">
+                        <b>Available Balance: </b>
+                        {transactionsAccount.availableBalance}
+                    </div>
+                    <div className="cell">
+                        <b>Due Balance: </b>
+                        {transactionsAccount.dueBalance}
+                    </div>
+                    <div className="cell">
+                        <b>Transactions: </b>
+                        {transactionHistory.length}
+                    </div>
+                </div>
             </div>
             
             <div className="transactionHistoryCard">
