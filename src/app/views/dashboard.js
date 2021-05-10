@@ -4,6 +4,7 @@ import store from '../store';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import  './homepage.css'
+import { Redirect } from 'react-router';
 
 
 const mapStateToProps = (state) => {
@@ -20,6 +21,20 @@ function Dashboard (props) {
     const [accountNumber, updateAccountNumber] = useState(store.getState().accountNumber);
     const [accountTransactions, updateTransactions] = useState(store.getState().transactions.length);
 
+    const [redirectState, updateRedirect] = useState({
+        redirect : false,
+        path : '',
+        props : {},
+    });
+
+    function openPage (currentPath, passProps) {
+        updateRedirect({
+            redirect : true,
+            path : currentPath,
+            props : passProps,
+        })
+    }
+
     store.subscribe( () => {
         updateAvailableBalance(props.accountAvailableBalance)
         updateDueBalance(props.accountDueBalance)
@@ -28,6 +43,7 @@ function Dashboard (props) {
 
     return (
         <div className="mainView">
+            { redirectState.redirect ? <Redirect exact to={redirectState.path} /> : ''}
             <Header />
 
             <div className="balanceView">
@@ -72,21 +88,25 @@ function Dashboard (props) {
                     </div>
 
                 </div>
-                    
 
             </div>
-            <div onClick={() => console.log('transactionHistory clicked')} className="specialButton">
+
+            <div onClick={() => {openPage('/transaction', 'pageProps')}} className="specialButton">
+                    <div>
+                        Add a new Transaction:
+                    </div>
+            </div>
+
+            <div onClick={() => {openPage('/transactionHistory', 'pageProps')}} className="specialButton">
                     <div>
                         View Transaction History:
                     </div>
-
             </div>
 
-            <div onClick={() => console.log('authTransaction clicked')} className="specialButton">
+            <div onClick={() => {openPage('/transactionAuthentication', 'pageProps')}} className="specialButton">
                     <div>
                         Authenticate Transaction:
                     </div>
-
             </div>
 
             <Footer />

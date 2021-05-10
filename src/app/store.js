@@ -8,7 +8,7 @@ const initialState = {
 
   transactions : [
     {
-      transactionID : 'UNIQUEID',
+      transactionID : 6528960483236,
       transactionAccount : 'Parent Account Number',
       date : new Date(),
       ammount : 10,
