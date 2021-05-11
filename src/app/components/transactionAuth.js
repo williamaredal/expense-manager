@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
-export default function TransactionAuthentication () {
+const mapStateToProps = (state) => {
+    return{
+        currentState : state,
+    }
+}
+
+
+function TransactionAuthentication (props) {
 
     return (
         <div>
@@ -10,3 +18,5 @@ export default function TransactionAuthentication () {
         </div>
     )
 }
+
+export default connect(mapStateToProps)(TransactionAuthentication);

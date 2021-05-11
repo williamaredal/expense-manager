@@ -1,32 +1,49 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router';
+import store from '../store';
+import { connect } from 'react-redux';
+
+const mapStateToProps = (state) => {
+    return{
+        currentState : state,
+    }
+}
 
 
-export default function TransactionHistory (props) {
+function TransactionHistory (props) {
     
     const [redirectState, updateRedirect] = useState({
         redirect : false,
         path : '',
-        props : {},
     });
 
-    function openPage (currentPath, passProps) {
+    function openPage (currentPath, passedTransaction) {
+        store.dispatch({
+            type : 'expences/passTransaction',
+            payload : {
+                transactionNumber : passedTransaction.transactionID,
+                parentAccount : passedTransaction.transactionAccount,
+                ammount : passedTransaction.ammount,
+                date : passedTransaction.date,
+                title : passedTransaction.transactionTitle,
+                description : passedTransaction.transactionDescription,
+                authenticated : passedTransaction.transactionAuthenticated,
+            }
+        })
         updateRedirect({
             redirect : true,
             path : currentPath,
-            props : passProps,
         });
-        console.log(redirectState)
     }
 
     return (
         <div>
-            {redirectState.redirect ? <Redirect exact to={{pathname : '/transaction', state : { passedTransaction : redirectState.props, parentAccount : props.transactionsAccount}}}/> : ''}
+            {redirectState.redirect ? <Redirect exact to={redirectState.path}/> : ''}
             {props.transactionHistory.map( (transaction, i) => {
                 const transactionDate = transaction.date.getDate() + '-' + (transaction.date.getMonth() + 1) + '-' + transaction.date.getFullYear();
 
                 return (
-                    <div key={i} onClick={() => {openPage('/transaction', transaction)}} className="transactionCard"> {/* onClick function can be used to pass transaction values on redirect*/}
+                    <div key={i} onClick={() => {openPage('/transaction', transaction)}} className="transactionCard">
                         <div className="cell">
                             <b>Account:</b> {transaction.transactionAccount}
                         </div>
@@ -45,3 +62,6 @@ export default function TransactionHistory (props) {
         </div>
     )
 }
+
+
+export default connect(mapStateToProps)(TransactionHistory);

@@ -3,11 +3,16 @@ import Header from '../components/header';
 import Footer from '../components/footer';
 import TransactionForm from '../components/transactionForm';
 import './transaction.css'
+import { connect } from 'react-redux';
 
+const mapStateToProps = (state) => {
+    return {
+        currentState : state,
+    }
+}
 
-export default function Transaction (props) {
+function Transaction (props) {
     
-
     return (
         <div className="mainView">
             <Header />
@@ -19,3 +24,6 @@ export default function Transaction (props) {
         </div>
     )
 }
+
+
+export default connect(mapStateToProps)(Transaction);

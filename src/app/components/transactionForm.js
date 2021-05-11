@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
 import store from '../store';
+import { connect } from 'react-redux';
 
-export default function TransactionForm (props) {
+const mapStateToProps = (state) => {
+    return {
+        passedAccount : state.parentAccount,
+        passedTransaction : state.currentTransaction,
+    }
+}
+
+
+function TransactionForm (props) {
+    console.log(props)
     const [transactionDetails, updateTransaction] = useState({
-        transactionNumber : props.transactionNumber ? props.transactionNumber : Math.floor(Math.random()*10000000000000), // switch to uuid4 
-        parentAccount : 'Parent Account', // passed through props
-        ammount : 0,
-        transactionTitle : '',
-        transactionDescription : '',
+        transactionNumber : props.passedTransaction ? props.passedTransaction.transactionID : Math.floor(Math.random()*10000000000000), // switch to uuid4 
+        parentAccount : props.passedAccount ? props.passedAccount : 'Parent Account', // passed through props
+        ammount : props.passedTransaction.ammount ? props.passedTransaction.ammount : 0,
+        transactionTitle : props.passedTransaction.transactionTitle ? props.passedTransaction.transactionTitle : '',
+        transactionDescription : props.passedTransaction.transactionDescription ? props.passedTransaction.transactionDescription : '',
     });
 
     function updateFormVars (key, value) {
@@ -56,19 +66,22 @@ export default function TransactionForm (props) {
             <div className="transactionForm">
 
                 <p className="titleUnderline"><b>Transaction: {transactionDetails.transactionNumber}</b></p>
-                <input className="formInput" placeholder="ammount" name="ammount" onChange={(e) => {updateFormVars(e.target.name, Number(e.target.value))}}/>
-                <input className="formInput" placeholder="title" name="transactionTitle" onChange={(e) => {updateFormVars(e.target.name, e.target.value)}}/>
-                <input className="formInput" placeholder="description" name="transactionDescription" onChange={(e) => {updateFormVars(e.target.name, e.target.value)}}/>
-                <button className="button" onClick={() => submitExpence()}>Submit Expence</button>
+                <input className="formInput" value={transactionDetails.transactionTitle ? transactionDetails.transactionTitle : ''} placeholder="Title" name="transactionTitle" onChange={(e) => {updateFormVars(e.target.name, e.target.value)}}/>
+                <input className="formInput" value={transactionDetails.transactionDescription ? transactionDetails.transactionDescription : ''} placeholder="Description" name="transactionDescription" onChange={(e) => {updateFormVars(e.target.name, e.target.value)}}/>
+                <input className="formInput" value={transactionDetails.ammount ? transactionDetails.ammount : ''} placeholder="Ammount" name="ammount" onChange={(e) => {updateFormVars(e.target.name, Number(e.target.value))}}/>
                 <button className="button" onClick={() => authenticateExpence()}>Authenticate Expence</button>
+                <button className="button" onClick={() => submitExpence()}>Submit Expence</button>
+
 
                 <div>
                     <p>this is a transaction page with:</p>
-                    <p>Ammount: {transactionDetails.ammount}</p>
                     <p>Title: {transactionDetails.transactionTitle}</p>
-                    <p>description: {transactionDetails.transactionDescription}</p>
+                    <p>Description: {transactionDetails.transactionDescription}</p>
+                    <p>Ammount: {transactionDetails.ammount}</p>
                 </div>
             </div>
         </div>
     )
 }
+
+export default connect(mapStateToProps)(TransactionForm);

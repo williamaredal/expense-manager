@@ -24,14 +24,12 @@ function Dashboard (props) {
     const [redirectState, updateRedirect] = useState({
         redirect : false,
         path : '',
-        props : {},
     });
 
-    function openPage (currentPath, passProps) {
+    function openPage (currentPath) {
         updateRedirect({
             redirect : true,
             path : currentPath,
-            props : passProps,
         })
     }
 
@@ -91,19 +89,19 @@ function Dashboard (props) {
 
             </div>
 
-            <div onClick={() => {openPage('/transaction', 'pageProps')}} className="specialButton">
+            <div onClick={() => {openPage('/transaction')}} className="specialButton">
                     <div>
                         Add a new Transaction:
                     </div>
             </div>
 
-            <div onClick={() => {openPage('/transactionHistory', 'pageProps')}} className="specialButton">
+            <div onClick={() => {openPage('/transactionHistory')}} className="specialButton">
                     <div>
                         View Transaction History:
                     </div>
             </div>
 
-            <div onClick={() => {openPage('/transactionAuthentication', 'pageProps')}} className="specialButton">
+            <div onClick={() => {openPage('/transactionAuthentication')}} className="specialButton">
                     <div>
                         Authenticate Transaction:
                     </div>

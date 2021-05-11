@@ -40,6 +40,8 @@ body {
   margin: 0.5rem;
   background-color: #f1f1f1;
   font-weight: bolder;
+  align-self: center;
+  min-width: 160px;
 }
 
 .button:hover {
@@ -80,4 +82,5 @@ body {
   border-right: none;
   border-bottom-width: medium;
   border-color: #16284C;
+  align-self: center;
 }

@@ -14,6 +14,7 @@
     display: flex;
     flex-direction: column;
     margin: 2rem;
+    width: 30%;
 }
 
 .formInput {
@@ -23,4 +24,11 @@
     border-style: solid;
     border-width: medium;
     border-color: #16284C;
+    width: auto;
+}
+
+.formButtons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }

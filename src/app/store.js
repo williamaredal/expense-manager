@@ -6,6 +6,10 @@ const initialState = {
   accountAvailableBalance : 100, // sum of authenticated transactions
   accountDueBalance : 10, // sum of transactions pending authentication
 
+  currentTransaction : {
+
+  },
+
   transactions : [
     {
       transactionID : 6528960483236,
@@ -74,6 +78,20 @@ function AccountantReducer ( state = initialState, action) {
         },
       ]
     }
+
+    case 'expences/passTransaction' :
+      return {
+        ...state,
+        currentTransaction : {
+          transactionID : action.payload.transactionNumber,
+          transactionAccount : action.payload.parentAccount,
+          ammount : action.payload.ammount,
+          date : action.payload.date,
+          transactionTitle : action.payload.title,
+          transactionDescription : action.payload.description,
+          transactionAuthenticated : action.payload.authenticated,
+        }
+      }
     
     default : 
     return state
