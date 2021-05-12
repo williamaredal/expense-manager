@@ -1,10 +1,10 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, useHistory } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Dashboard from './app/views/dashboard';
 import Register from './app/views/register';
 import Login from './app/views/login';
 import Transactions from './app/views/transactions';
-import TransactionAuth from './app/components/transactionAuth';
+import TransactionAuth from './app/views/transactionAuth';
 import Transaction from './app/views/transaction';
 import  './index.css'
 

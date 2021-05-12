@@ -62,7 +62,7 @@ function Transactions (props) {
             </div>
             
             <div className="transactionHistoryCard">
-                <TransactionHistory transactionHistory={transactionHistory} />
+                <TransactionHistory />
             </div>
 
             <Footer />

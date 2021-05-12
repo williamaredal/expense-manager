@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import TransactionForm from '../components/transactionForm';
-import './transaction.css'
 import { connect } from 'react-redux';
+import './transaction.css'
 
 const mapStateToProps = (state) => {
     return {

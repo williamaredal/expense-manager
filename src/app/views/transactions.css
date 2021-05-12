@@ -7,12 +7,12 @@
 .transactionHistoryCard {
     display: flex;
     justify-content: center;
-    margin: 1rem;
+    margin: 0.5rem;
 }
 
 .transactionCard {
     border-radius: 1rem;
-    margin: 0.25rem;
+    margin: 0.5rem;
     width: 100%;
     border-style: solid;
     border-width: thin;
@@ -28,6 +28,7 @@
 .transactionsOverviewCard {
     display: flex;
     justify-content: center;
+    margin-top: 1rem;
 }
 
 .transactionsOverview {

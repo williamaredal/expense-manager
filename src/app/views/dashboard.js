@@ -41,7 +41,7 @@ function Dashboard (props) {
 
     return (
         <div className="mainView">
-            { redirectState.redirect ? <Redirect exact to={redirectState.path} /> : ''}
+            { redirectState.redirect ? <Redirect exact to={redirectState.path} /> : null}
             <Header />
 
             <div className="balanceView">

@@ -11,13 +11,14 @@ const mapStateToProps = (state) => {
 
 
 function TransactionForm (props) {
-    console.log(props)
+    console.log(props.passedTransaction)
+    // is missing transaction.date ??
     const [transactionDetails, updateTransaction] = useState({
-        transactionNumber : props.passedTransaction ? props.passedTransaction.transactionID : Math.floor(Math.random()*10000000000000), // switch to uuid4 
-        parentAccount : props.passedAccount ? props.passedAccount : 'Parent Account', // passed through props
-        ammount : props.passedTransaction.ammount ? props.passedTransaction.ammount : 0,
-        transactionTitle : props.passedTransaction.transactionTitle ? props.passedTransaction.transactionTitle : '',
-        transactionDescription : props.passedTransaction.transactionDescription ? props.passedTransaction.transactionDescription : '',
+        transactionNumber : (Object.keys(props.passedTransaction).length !== 0) ? props.passedTransaction.transactionID : Math.floor(Math.random()*10000000000000), // switch to uuid4 
+        parentAccount : (props.passedAccount !== undefined) ? props.passedAccount : 'Parent Account', // passed through props
+        ammount : (props.passedTransaction.ammount !== 0) ? props.passedTransaction.ammount : 0,
+        transactionTitle : (props.passedTransaction.transactionTitle !== undefined) ? props.passedTransaction.transactionTitle : '',
+        transactionDescription : (props.passedTransaction.transactionDescription !== undefined) ? props.passedTransaction.transactionDescription : '',
     });
 
     function updateFormVars (key, value) {
