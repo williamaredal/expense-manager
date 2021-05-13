@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import store from '../store';
 import Header from '../components/header';
@@ -9,6 +9,7 @@ import { Redirect } from 'react-router';
 
 const mapStateToProps = (state) => {
     return {
+        accountNumber : state.accountNumber,
         accountAvailableBalance : state.accountAvailableBalance,
         accountDueBalance : state.accountDueBalance,
         transactions : state.transactions
@@ -16,10 +17,10 @@ const mapStateToProps = (state) => {
 }
 
 function Dashboard (props) {
-    const [availableBalance, updateAvailableBalance] = useState(store.getState().accountAvailableBalance);
-    const [dueBalance, updateDueBalance] = useState(store.getState().accountDueBalance);
-    const [accountNumber, updateAccountNumber] = useState(store.getState().accountNumber);
-    const [accountTransactions, updateTransactions] = useState(store.getState().transactions.length);
+    const [availableBalance, updateAvailableBalance] = useState(props.accountAvailableBalance);
+    const [dueBalance, updateDueBalance] = useState(props.accountDueBalance);
+    const [accountNumber, updateAccountNumber] = useState(props.accountNumber);
+    const [accountTransactions, updateTransactions] = useState(props.transactions.length);
 
     const [redirectState, updateRedirect] = useState({
         redirect : false,
@@ -33,11 +34,6 @@ function Dashboard (props) {
         })
     }
 
-    store.subscribe( () => {
-        updateAvailableBalance(props.accountAvailableBalance)
-        updateDueBalance(props.accountDueBalance)
-        updateTransactions(props.transactions.length)
-    });
 
     return (
         <div className="mainView">

@@ -25,16 +25,6 @@ function Transactions (props) {
         ...props.currentState.transactions
     ]);
 
-    store.subscribe( () => {
-        updateHistory(
-            props.currentState.transactions
-        );
-        updateAccount({
-            accountNumber : props.currentState.accountNumber,
-            availableBalance : props.accountAvailableBalance,
-            dueBalance : props.accountDueBalance,
-        });
-    });
     
     return (
         <div className="mainView">

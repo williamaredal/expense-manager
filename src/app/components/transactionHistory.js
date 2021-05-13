@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router';
 import store from '../store';
 import { connect } from 'react-redux';
@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
     return{
-        currentState : state,
+        transactions : state.transactions,
     }
 }
 
@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
 function TransactionHistory (props) {
     
     const [transactionHistory, updateHistory] = useState([
-        ...props.currentState.transactions
+        ...props.transactions
     ]);
 
     const [redirectState, updateRedirect] = useState({
@@ -40,6 +40,7 @@ function TransactionHistory (props) {
             path : currentPath,
         });
     }
+
 
     return (
         <div>

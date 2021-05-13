@@ -73,7 +73,7 @@ function TransactionForm (props) {
                 <button className="button" onClick={() => authenticateExpence()}>Authenticate Expence</button>
                 <button className="button" onClick={() => submitExpence()}>Submit Expence</button>
 
-
+                <button className="button" onClick={() => {console.log('redirect back')}}>Back</button>
                 <div>
                     <p>this is a transaction page with:</p>
                     <p>Title: {transactionDetails.transactionTitle}</p>

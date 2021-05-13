@@ -1,0 +1,39 @@
+.mainView {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.transactionHistoryCard {
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem;
+}
+
+.authenticateCard {
+    border-radius: 1rem;
+    margin: 0.5rem;
+    width: 100%;
+    border-style: solid;
+    border-width: thin;
+    border-color: black;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.authenticateButton {
+    border-radius: 0.5rem;
+    border: none;
+    padding: 0.3rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    background-color: #dbdbdb;
+    font-weight: bolder;
+    align-self: center;
+}
+
+.authenticateButton:hover {
+    background-color: #16284C;
+    color: #f1f1f1;
+    box-shadow: 0 0 5px black;
+}
