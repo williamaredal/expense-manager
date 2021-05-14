@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import store from '../store';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import TransactionHistory from '../components/transactionHistory';
