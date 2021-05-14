@@ -22,8 +22,8 @@ function TransactionForm (props) {
     const [transactionDetails, updateTransaction] = useState({
         transactionNumber : props.passedTransaction.transactionID || Math.floor(Math.random()*10000000000000), // switch to uuid4 
         parentAccount : props.passedAccount || 'Parent Account Number', // passed through props
-        ammount : props.passedTransaction.ammount || 0,
-        date : props.passedTransaction.date || new Date(),
+        amount : props.passedTransaction.amount || 0,
+        date : props.passedTransaction.date || new Date().toString(),
         transactionTitle : props.passedTransaction.transactionTitle || '',
         transactionDescription : props.passedTransaction.transactionDescription || '',
         transactionAuthenticated : props.passedTransaction.transactionAuthenticated || false,
@@ -48,7 +48,7 @@ function TransactionForm (props) {
                     newTransactions : props.transactions.filter(t => (t.transactionID !== transactionDetails.transactionNumber)),
                     transactionNumber : transactionDetails.transactionNumber,
                     parentAccount : transactionDetails.parentAccount, 
-                    ammount : transactionDetails.ammount,
+                    amount : transactionDetails.amount,
                     date : transactionDetails.date,
                     title : transactionDetails.transactionTitle,
                     description : transactionDetails.transactionDescription,
@@ -59,8 +59,8 @@ function TransactionForm (props) {
             updateTransaction({
                 transactionNumber : Math.floor(Math.random()*10000000000000), // switch to uuid4 
                 parentAccount : 'Parent Account Number', // passed through props
-                ammount : 0,
-                date : new Date(),
+                amount : 0,
+                date : new Date().toString(),
                 transactionTitle : '',
                 transactionDescription : '',
                 transactionAuthenticated : false,
@@ -84,7 +84,7 @@ function TransactionForm (props) {
                     newTransactions : props.transactions.filter(t => (t.transactionID !== transactionDetails.transactionNumber)),
                     transactionNumber : transactionDetails.transactionNumber,
                     parentAccount : transactionDetails.parentAccount,
-                    ammount : transactionDetails.ammount,
+                    amount : transactionDetails.amount,
                     date : transactionDetails.date,
                     title : transactionDetails.transactionTitle,
                     description : transactionDetails.transactionDescription,
@@ -95,8 +95,8 @@ function TransactionForm (props) {
             updateTransaction({
                 transactionNumber : Math.floor(Math.random()*10000000000000), // switch to uuid4 
                 parentAccount : 'Parent Account Number', // passed through props
-                ammount : 0,
-                date : new Date(),
+                amount : 0,
+                date : new Date().toString(),
                 transactionTitle : '',
                 transactionDescription : '',
                 transactionAuthenticated : false,
@@ -132,8 +132,8 @@ function TransactionForm (props) {
                 </label>
 
                 <label className="formLabel">
-                    Ammount:
-                    <input className="formInput" value={transactionDetails.ammount ? transactionDetails.ammount : ''} placeholder="Ammount" name="ammount" onChange={(e) => {updateFormVars(e.target.name, Number(e.target.value))}}/>
+                    Amount:
+                    <input className="formInput" value={transactionDetails.amount ? transactionDetails.amount : ''} placeholder="Amount" name="amount" onChange={(e) => {updateFormVars(e.target.name, Number(e.target.value))}}/>
                 </label>
 
                 <button className="button" onClick={() => authenticateExpence()}>Authenticate Expence</button>

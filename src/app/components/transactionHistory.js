@@ -42,7 +42,6 @@ function TransactionHistory (props) {
         <div>
             {redirectState.redirect ? <Redirect exact to={redirectState.path}/> : null}
             {props.transactions.map( (transaction, i) => {
-                const transactionDate = transaction.date.getDate() + '-' + (transaction.date.getMonth() + 1) + '-' + transaction.date.getFullYear();
 
                 return (
                     <div key={i} onClick={() => {openPage('/transaction', transaction)}} className="transactionCard">
@@ -53,7 +52,7 @@ function TransactionHistory (props) {
                             <b>Ammount:</b> {transaction.ammount}
                         </div>
                         <div className="cell">
-                            <b>Date:</b> {transactionDate}
+                            <b>Date:</b> {new Date(transaction.date).toDateString()}
                         </div>
                         <div className="cell">
                             <b>Authenticated:</b> <b className={transaction.transactionAuthenticated ? "transactionAuthenticated" : "transactionWaiting"}>{transaction.transactionAuthenticated.toString()}</b>

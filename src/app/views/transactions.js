@@ -8,44 +8,37 @@ import './transactions.css';
 
 const mapStateToProps = (state) => {
     return {
-        currentState : state,
+        accountNumber : state.accountNumber,
+        availableBalance : state.accountAvailableBalance,
+        dueBalance : state.accountDueBalance,
+        transactions : state.transactions,
     }
 }
 
 
 function Transactions (props) {
-    const [transactionsAccount, updateAccount] = useState({
-        accountNumber : props.currentState.accountNumber,
-        availableBalance : props.currentState.accountAvailableBalance,
-        dueBalance : props.currentState.accountDueBalance,
-
-    });
-    const [transactionHistory, updateHistory] = useState([
-        ...props.currentState.transactions
-    ]);
-
     
     return (
         <div className="mainView">
 
             <Header />
             <div className="transactionsOverviewCard">
-                <p className="titleUnderline"><b>Transaction History of Account {transactionsAccount.accountNumber}</b></p>
+                <p className="titleUnderline"><b>Transaction History of Account {props.accountNumber}</b></p>
             </div>
 
             <div className="transactionsOverviewCard">
                 <div className="transactionsOverview">
                     <div className="cell">
                         <b>Available Balance: </b>
-                        {transactionsAccount.availableBalance}
+                        {props.availableBalance}
                     </div>
                     <div className="cell">
                         <b>Due Balance: </b>
-                        {transactionsAccount.dueBalance}
+                        {props.dueBalance}
                     </div>
                     <div className="cell">
                         <b>Transactions: </b>
-                        {transactionHistory.length}
+                        {props.transactions.length}
                     </div>
                 </div>
             </div>

@@ -18,7 +18,7 @@ function TransactionAuthList (props) {
                 newTransactions : props.transactions.filter(t => t.transactionID !== transaction.transactionID),
                 transactionNumber : transaction.transactionID,
                 parentAccount : transaction.transactionAccount,
-                ammount : transaction.ammount,
+                amount : transaction.amount,
                 date : transaction.date,
                 title : transaction.transactionTitle,
                 description : transaction.transactionDescription,
@@ -31,7 +31,6 @@ function TransactionAuthList (props) {
     return (
         <div>
             {props.transactions.filter( transaction => transaction.transactionAuthenticated === false).map( (filteredTransaction, i) => {
-                const transactionDate = filteredTransaction.date.getDate() + '-' + (filteredTransaction.date.getMonth() + 1) + '-' + filteredTransaction.date.getFullYear();
 
                 return (
                     <div key={i} className="authenticateCard">
@@ -39,10 +38,10 @@ function TransactionAuthList (props) {
                             <b>Account:</b> {filteredTransaction.transactionAccount}
                         </div>
                         <div className="cell">
-                            <b>Ammount:</b> {filteredTransaction.ammount}
+                            <b>Amount:</b> {filteredTransaction.amount}
                         </div>
                         <div className="cell">
-                            <b>Date:</b> {transactionDate}
+                            <b>Date:</b> {new Date(filteredTransaction.date).toDateString()}
                         </div>
                         <div className="cell">
                             <button className="authenticateButton" onClick={() => authTransaction(filteredTransaction)}>Authenticate</button>
