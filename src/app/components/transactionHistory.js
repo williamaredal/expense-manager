@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Redirect } from 'react-router';
 import store from '../store';
 import { connect } from 'react-redux';
@@ -12,10 +12,6 @@ const mapStateToProps = (state) => {
 
 
 function TransactionHistory (props) {
-    
-    const [transactionHistory, updateHistory] = useState([
-        ...props.transactions
-    ]);
 
     const [redirectState, updateRedirect] = useState({
         redirect : false,
@@ -29,12 +25,12 @@ function TransactionHistory (props) {
                 transactionNumber : passedTransaction.transactionID,
                 parentAccount : passedTransaction.transactionAccount,
                 ammount : passedTransaction.ammount,
-                date : passedTransaction.date.toString(),
+                date : passedTransaction.date,
                 title : passedTransaction.transactionTitle,
                 description : passedTransaction.transactionDescription,
                 authenticated : passedTransaction.transactionAuthenticated,
             }
-        })
+        });
         updateRedirect({
             redirect : true,
             path : currentPath,
@@ -45,7 +41,7 @@ function TransactionHistory (props) {
     return (
         <div>
             {redirectState.redirect ? <Redirect exact to={redirectState.path}/> : null}
-            {transactionHistory.map( (transaction, i) => {
+            {props.transactions.map( (transaction, i) => {
                 const transactionDate = transaction.date.getDate() + '-' + (transaction.date.getMonth() + 1) + '-' + transaction.date.getFullYear();
 
                 return (

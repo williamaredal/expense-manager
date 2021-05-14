@@ -17,13 +17,19 @@
 }
 
 .formInput {
-    border-radius:1rem;
+    border-radius: 0.75rem;
     padding: 0.5rem;
-    margin: 0.25rem;
+    margin-bottom: 0.5rem;
     border-style: solid;
     border-width: medium;
     border-color: #16284C;
     width: auto;
+}
+
+.formLabel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .formButtons {

@@ -23,13 +23,9 @@ function TransactionAuthList (props) {
                 title : transaction.transactionTitle,
                 description : transaction.transactionDescription,
                 authenticated : true,
-
             }
         });
     }
-
-
-
 
 
     return (

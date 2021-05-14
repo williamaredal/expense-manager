@@ -55,18 +55,13 @@ function AccountantReducer ( state = initialState, action) {
   console.log(action.type, action.payload, state.transactions)
 
   switch(action.type) {
-    case 'expences/balance' : 
-    return {
-      ...state,
-      balance : state.balance + action.payload
-    }
     
-    case 'expences/addTransaction' : 
+    case 'expences/submitTransaction' : 
     return {
       ...state,
-      accountDueBalance : state.accountDueBalance + action.payload.ammount,
+      accountDueBalance : state.accountDueBalance - (state.currentTransaction.ammount || 0)+ action.payload.ammount,
       transactions : [
-        ...state.transactions,
+        ...(action.payload.newTransactions || state.transactions),
         {
           transactionID : action.payload.transactionNumber ? action.payload.transactionNumber : Math.round(Math.random()*10000000000000),
           transactionAccount : action.payload.parentAccount,
@@ -82,9 +77,9 @@ function AccountantReducer ( state = initialState, action) {
     case 'expences/authTransaction' : 
     return {
       ...state,
-      accountAvailableBalance : state.accountAvailableBalance + action.payload.ammount,
+      accountAvailableBalance : state.accountAvailableBalance - (state.currentTransaction.ammount || 0) + action.payload.ammount,
       transactions : [
-        ...action.payload.newTransactions,
+        ...(action.payload.newTransactions || state.transactions),
         {
           transactionID : action.payload.transactionNumber,
           transactionAccount : action.payload.parentAccount,
@@ -104,7 +99,7 @@ function AccountantReducer ( state = initialState, action) {
           transactionID : action.payload.transactionNumber,
           transactionAccount : action.payload.parentAccount,
           ammount : action.payload.ammount,
-          date : action.payload.date.toString(),
+          date : action.payload.date,
           transactionTitle : action.payload.title,
           transactionDescription : action.payload.description,
           transactionAuthenticated : action.payload.authenticated,
