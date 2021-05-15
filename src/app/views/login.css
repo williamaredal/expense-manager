@@ -4,12 +4,17 @@
     min-height: 100vh;
 }
 
-.transactionFormCard {
+.loginTitle {
     display: flex;
     justify-content: center;
 }
 
-.transactionForm {
+.loginFormCard {
+    display: flex;
+    justify-content: center;
+}
+
+.loginForm {
     display: flex;
     flex-direction: column;
     margin: 1rem;

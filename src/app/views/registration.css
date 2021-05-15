@@ -4,12 +4,17 @@
     min-height: 100vh;
 }
 
-.transactionFormCard {
+.registrationTitle {
     display: flex;
     justify-content: center;
 }
 
-.transactionForm {
+.registrationFormCard {
+    display: flex;
+    justify-content: center;
+}
+
+.registrationForm {
     display: flex;
     flex-direction: column;
     margin: 1rem;
