@@ -78,6 +78,7 @@ function AccountantReducer ( state = initialState, action) {
     return {
       ...state,
       accountAvailableBalance : state.accountAvailableBalance - (state.currentTransaction.amount || 0) + action.payload.amount,
+      accountDueBalance : state.accountDueBalance - (state.currentTransaction.amount || 0) - action.payload.amount,
       transactions : [
         ...(action.payload.newTransactions || state.transactions),
         {

@@ -24,7 +24,7 @@ function TransactionHistory (props) {
             payload : {
                 transactionNumber : passedTransaction.transactionID,
                 parentAccount : passedTransaction.transactionAccount,
-                ammount : passedTransaction.ammount,
+                amount : passedTransaction.amount,
                 date : passedTransaction.date,
                 title : passedTransaction.transactionTitle,
                 description : passedTransaction.transactionDescription,
@@ -49,7 +49,7 @@ function TransactionHistory (props) {
                             <b>Account:</b> {transaction.transactionAccount}
                         </div>
                         <div className="cell">
-                            <b>Ammount:</b> {transaction.ammount}
+                            <b>Amount:</b> {transaction.amount}
                         </div>
                         <div className="cell">
                             <b>Date:</b> {new Date(transaction.date).toDateString()}
