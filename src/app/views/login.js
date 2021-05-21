@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
+import Header from '../components/header';
 import './login.css';
 
 const mapStateToProps = (state) => {
@@ -46,6 +47,9 @@ function Login () {
 
     return (
         <div className="mainView">
+            
+            <Header />
+
             <div className="loginTitle">
                 <h1>
                     Sign in

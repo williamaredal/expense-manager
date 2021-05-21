@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
+import Header from '../components/header';
 import './registration.css';
 
 const mapStateToProps = (state) => {
@@ -47,6 +48,9 @@ function Register () {
 
     return (
         <div className="mainView">
+            
+            <Header />
+
             <div className="registrationTitle">
                 <h1>
                     Register
