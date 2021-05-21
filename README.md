@@ -1,6 +1,6 @@
-# expence-manager
+# expense-manager
 
-# Running expence-manager locally
+# Running expense-manager locally
 
 ### 1. Make sure you have the latest versions of Node installed, and clone this repository.
 Link for Node if you don't already have it installed:
