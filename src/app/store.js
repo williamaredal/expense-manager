@@ -52,8 +52,6 @@ const initialState = {
 
 function AccountantReducer ( state = initialState, action) {
 
-  console.log(action.type, action.payload, state.transactions)
-
   switch(action.type) {
     
     case 'expences/submitTransaction' : 
